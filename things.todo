@@ -1,0 +1,6 @@
+ ☐ DateField
+ ☐ TimeField
+ ☐ DurationField
+ ☐ UrlField (checks if the url is 200 fetchable)
+ ☐ Resource/Link level validate(data) method that is supposed to raise ValidationError
+ ☐ Handle resource composition (parent/child relation)

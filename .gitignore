@@ -1,0 +1,6 @@
+*.pyc
+doc
+dist
+dist_deb
+RELEASE-VERSION
+virtualenv*
