@@ -40,3 +40,8 @@ Example
 
 1. Increment the version in **CHANGES** file
 2. Run *release.sh* to update python versions in **setup*.py** files
+
+## Links
+
+Travis CI: https://travis-ci.org/F-Secure/resource-api
+Read the docs: http://resource-api.readthedocs.org/en/latest/
