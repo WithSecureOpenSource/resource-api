@@ -64,5 +64,5 @@ Always create your own feature branches from the **dev** branch. Not from **mast
 
 ## Links
 
-Travis CI: https://travis-ci.org/F-Secure/resource-api
-Read the docs: http://resource-api.readthedocs.org/en/latest/
+- Travis CI: https://travis-ci.org/F-Secure/resource-api
+- Read the docs: http://resource-api.readthedocs.org/en/latest/
