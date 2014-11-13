@@ -286,17 +286,15 @@ class LinkToOne(Link):
     """ Represents a relationship with cardinality ONE """
 
     def _get_item(self):
-        rel_pk = self._get_rel_pk()
-        if rel_pk is None:
-            return None
-        else:
-            return LinkInstance(self._target_collection, self._forward_link_instance, self._backward_link_instance,
-                                self._source_pk, rel_pk)
-
-    def _get_rel_pk(self):
         pks = self._forward_link_instance.get_uris(self._entry_point.user, self._source_pk)
         if len(pks) == 1:
-            return pks[0]
+            rel_pk = pks[0]
+            if not self._forward_link_instance.can_discover(self._entry_point.user, self._source_pk, rel_pk):
+                return None
+            if not self._target_collection._res.can_discover(self._entry_point.user, rel_pk):
+                return None
+            return LinkInstance(self._target_collection, self._forward_link_instance, self._backward_link_instance,
+                                self._source_pk, rel_pk)
         elif len(pks) == 0:
             return None
         else:

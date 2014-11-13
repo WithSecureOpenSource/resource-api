@@ -112,8 +112,8 @@ class LinkToOneAuthorizationTest(BaseTest):
 
     def test_get_non_discoverable_link(self):
         self.entry_point._user = {"link": {"discover": False}}
-        self.assertRaisesRegexp(DoesNotExist, lambda: self.src.get(1).links.the_target.item.target)
+        self.assertRaises(DoesNotExist, lambda: self.src.get(1).links.the_target.item.target)
 
     def test_get_link_with_non_discoverable_target(self):
         self.entry_point._user = {"target": {"discover": False}}
-        self.assertRaisesRegexp(DoesNotExist, lambda: self.src.get(1).links.the_target.item.target)
+        self.assertRaises(DoesNotExist, lambda: self.src.get(1).links.the_target.item.target)
