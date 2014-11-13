@@ -38,8 +38,29 @@ Example
 
 ## Release steps
 
-1. Increment the version in **CHANGES** file
-2. Run *release.sh* to update python versions in **setup*.py** files
+1. Merge **dev** into **master**
+2. Switch to **master**
+3. Make sure that all checks and tests pass
+4. Increment the version in **CHANGES** file according to the types of changes made since the latest release
+5. Run *release.sh* to update python versions in **setup*.py** files
+6. Commit the changes
+7. Execute "git tag VERSION -m VERSION"
+8. Switch to **dev**
+9. Add a new changelog entry that is just slightly higher than the released one (without release timestamp)
+10. Commit the changes
+11. Push **dev** & **maste** branches
+12. Push tags
+
+## Pull requests
+
+Always create your own feature branches from the **dev** branch. Not from **master** one.
+
+1. Make sure that all commits have descriptive messages and are up to the point
+2. pep8 and pyflakes checks are supposed to pass
+3. All tests are supposed to pass
+4. If it is a new feature - make sure that new tests are created and they pass
+5. Add a new set of bullet points to the latest changelog entry according to the specified format
+6. Create a pull request against the **dev** branch
 
 ## Links
 
