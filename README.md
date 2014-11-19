@@ -36,6 +36,13 @@ Example
         * MAJOR: removed deprecated function
 ```
 
+Notes:
+
+- It is a good idea to annotate each commit with PATCH|MINOR|MAJOR message so that it is easier to control the version
+  based on the output of `git log` command
+- There is no need to modify changelog when documentation or travis related files are updated. Only changes of the
+  source code are important.
+
 ## Release steps
 
 1. Merge **dev** into **master**
@@ -48,7 +55,7 @@ Example
 8. Switch to **dev**
 9. Add a new changelog entry that is just slightly higher than the released one (without release timestamp)
 10. Commit the changes
-11. Push **dev** & **maste** branches
+11. Push **dev** & **master** branches
 12. Push tags
 
 ## Pull requests
