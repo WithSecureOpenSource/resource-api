@@ -45,18 +45,21 @@ Notes:
 
 ## Release steps
 
-1. Merge **dev** into **master**
-2. Switch to **master**
+1. Switch to **master**
+2. Merge **dev** into **master**
 3. Make sure that all checks and tests pass
-4. Increment the version in **CHANGES** file according to the types of changes made since the latest release
+4. Increment the version in **CHANGES** file according to the types of changes made since the latest release. Add
+   timestamp to indicate that the version was released.
 5. Run *release.sh* to update python versions in **setup*.py** files
 6. Commit the changes
 7. Execute "git tag VERSION -m VERSION"
 8. Switch to **dev**
-9. Add a new changelog entry that is just slightly higher than the released one (without release timestamp)
-10. Commit the changes
-11. Push **dev** & **master** branches
-12. Push tags
+9. Merge **master** into **dev**
+10. Add a new changelog entry that is just slightly higher than the released one (without release timestamp) with a
+    FILLME entry
+11. Commit the changes
+12. Push **dev** & **master** branches to upstream
+13. Push tags to upstream
 
 ## Pull requests
 
