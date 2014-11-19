@@ -23,4 +23,6 @@ if [ "$BRANCH_NAME" == "master" ]; then
     python setup.py sdist upload
 
     rm ~/.pypirc
+else
+    echo "Not a master branch. Uploads from branch $BRANCH_NAME are not enabled."
 fi
