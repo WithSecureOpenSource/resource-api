@@ -1,8 +1,6 @@
 #!/bin/bash
 
-BRANCH_NAME=`git symbolic-ref --short HEAD`
-
-if [ "$BRANCH_NAME" == "master" ]; then
+if [ "$TRAVIS_BRANCH" == "master" ]; then
 
     if [ -z "$PIP_PASSWORD" ]; then
       echo "PIP_PASSWORD env variable is not set. Check Travis CI settings."
@@ -24,5 +22,5 @@ if [ "$BRANCH_NAME" == "master" ]; then
 
     rm ~/.pypirc
 else
-    echo "Not a master branch. Uploads from branch $BRANCH_NAME are not enabled."
+    echo "Not a master branch. Uploads from branch $TRAVIS_BRANCH are not enabled."
 fi
