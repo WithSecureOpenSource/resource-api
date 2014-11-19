@@ -11,5 +11,8 @@ setup(
     name="resource-api",
     version=SOURCE_VERSION,
     install_requires=["pytz", "isodate"],
-    packages=["resource_api"]
+    packages=["resource_api"],
+    author="F-Secure Corporation",
+    author_email="<TBD>",
+    url="http://resource-api.readthedocs.org/"
 )

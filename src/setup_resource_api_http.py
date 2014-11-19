@@ -11,5 +11,8 @@ setup(
     name="resource-api-http",
     version=SOURCE_VERSION,
     install_requires=["resource-api", "werkzeug"],
-    packages=["resource_api_http"]
+    packages=["resource_api_http"],
+    author="F-Secure Corporation",
+    author_email="<TBD>",
+    url="http://resource-api.readthedocs.org/"
 )
