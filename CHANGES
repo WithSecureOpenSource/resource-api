@@ -1,7 +1,8 @@
-3.0.1
+3.0.1 2014-11-19
 
     [Anton Berezin <anton.berezin@f-secure.com>]
         * PATCH: updated README file
+        * PATCH: enabled PyPi uploads via Travis CI
 
 3.0.0 2014-11-12
 

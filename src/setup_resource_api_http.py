@@ -4,7 +4,7 @@ See LICENSE for details
 """
 from setuptools import setup
 
-SOURCE_VERSION = "3.0.0"
+SOURCE_VERSION = "3.0.1"
 
 
 setup(

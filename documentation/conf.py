@@ -25,7 +25,7 @@ master_doc = 'index'
 project = u'Resource API'
 copyright = u'2014, F-Secure'
 
-version = '3.0.0'
+version = '3.0.1'
 release = version
 exclude_patterns = ['_build']
 pygments_style = 'sphinx'
