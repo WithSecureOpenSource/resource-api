@@ -6,3 +6,4 @@ RELEASE-VERSION
 virtualenv*
 src/CHANGES
 src/LICENSE
+src/README

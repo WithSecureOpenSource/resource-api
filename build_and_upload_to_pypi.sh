@@ -11,6 +11,7 @@ if [ "$TRAVIS_BRANCH" == "master" ]; then
 
     cp CHANGES src
     cp LICENSE src
+    cp README.md src/README
 
     cd src
 
