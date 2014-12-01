@@ -4,3 +4,5 @@ dist
 dist_deb
 RELEASE-VERSION
 virtualenv*
+src/CHANGES
+src/LICENSE

@@ -9,6 +9,9 @@ if [ "$TRAVIS_BRANCH" == "master" ]; then
     cp travis.pypirc.in ~/.pypirc
     sed -i"" "s/__PASSWORD/$PIP_PASSWORD/g" ~/.pypirc
 
+    cp CHANGES src
+    cp LICENSE src
+
     cd src
 
     cp setup_resource_api.py setup.py
