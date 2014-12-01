@@ -54,11 +54,8 @@ Notes:
 6. Execute "git tag VERSION -m VERSION"
 7. Switch to **dev**
 8. Merge **master** into **dev**
-9. Add a new changelog entry that is just slightly higher than the released one (without release timestamp) with a
-    FILLME entry
-10. Commit the changes
-11. Push **dev** & **master** branches to upstream
-12. Push tags to upstream
+9. Push **dev** & **master** branches to upstream
+10. Push tags to upstream
 
 ## Pull requests
 
