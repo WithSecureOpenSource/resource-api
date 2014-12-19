@@ -72,3 +72,8 @@ Always create your own feature branches from the **dev** branch. Not from **mast
 
 - Travis CI: https://travis-ci.org/F-Secure/resource-api
 - Read the docs: http://resource-api.readthedocs.org/en/latest/
+
+## Note
+
+The core part of the project development work was done within the Digile’s Data to Intelligence
+program http://www.datatointelligence.fi/ and supported by Tekes, the Finnish Funding Agency for Innovation.
