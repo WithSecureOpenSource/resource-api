@@ -87,6 +87,8 @@ class DateTimeField(BaseField):
         return val
 
     def serialize(self, val):
+        if val is None:
+            return None
         return val.isoformat()
 
 
