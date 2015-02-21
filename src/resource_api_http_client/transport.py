@@ -102,6 +102,9 @@ class JsonClient(object):
                 if isinstance(value, list) or isinstance(value, dict):
                     params[key] = json.dumps(value, cls=JSONEncoder)
 
+        if not url:
+            url += "/"
+
         resp = self._http_client.open(
             path=url,
             method=method,
