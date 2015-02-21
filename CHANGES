@@ -1,3 +1,10 @@
+3.0.2 2015-02-21
+
+    [Anton Berezin <anton.berezin@f-secure.com>]
+        * PATCH: Fixed a bug with a missing value if datetime field is marked as optional
+        * PATCH: Append slash to the url if it is an empty string on the client to prevent a redirect
+        * PATCH: Changed one word in the documentation
+
 3.0.1 2014-11-19
 
     [Anton Berezin <anton.berezin@f-secure.com>]
