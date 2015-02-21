@@ -46,7 +46,7 @@ Also the following links are supposed to exist:
  - teacher can teach MULTIPLE courses but each course can be taught only by a SINGLE teacher
  - teacher can grade a student ONCE for every course the teacher owns
  - every student can grade every teacher ONCE for every course the teacher was teaching
- - every student can make comments about the teacher as much as he wants
+ - every student can make comments about the courses as much as he wants
 
 3: entity diagram
 -----------------
