@@ -2,5 +2,5 @@
 index-servers = pypi
 
 [pypi]
-username: fs-opensource
+username: __USERNAME
 password: __PASSWORD

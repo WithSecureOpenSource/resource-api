@@ -2,11 +2,16 @@
 
 if [ "$TRAVIS_BRANCH" == "master" ]; then
 
+    if [ -z "$PIP_USERNAME" ]; then
+      echo "PIP_USERNAME env variable is not set. Check Travis CI settings."
+    fi
+
     if [ -z "$PIP_PASSWORD" ]; then
       echo "PIP_PASSWORD env variable is not set. Check Travis CI settings."
     fi
 
     cp travis.pypirc.in ~/.pypirc
+    sed -i"" "s/__USERNAME/$PIP_USERNAME/g" ~/.pypirc
     sed -i"" "s/__PASSWORD/$PIP_PASSWORD/g" ~/.pypirc
 
     cp CHANGES src
