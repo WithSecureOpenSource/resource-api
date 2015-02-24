@@ -3,12 +3,12 @@ Copyright (c) 2014-2015 F-Secure
 See LICENSE for details
 """
 import unittest
-from datetime import datetime
+from datetime import datetime, date, time
 
 import pytz
 
 from resource_api.schema import(IntegerField, FloatField, StringField, BooleanField, ListField, Schema,
-                                DateTimeField, ObjectField)
+                                DateTimeField, ObjectField, DateField, TimeField, DurationField)
 from resource_api.errors import ValidationError, DeclarationError
 
 
@@ -52,16 +52,23 @@ class BaseSimpleFieldTest(PropertyFieldTest):
         self.assertEqual(field.get_schema()["default"], self.ok_val)
 
 
-class DateTimeFieldTest(PropertyFieldTest, unittest.TestCase):
+class BaseIsoFieldTest(PropertyFieldTest):
+
+    def test_naive_input(self):
+        field = self.field_class()
+        self.assertEqual(field.deserialize(self.transformed_val), self.transformed_val)
+
+
+class DateTimeFieldTest(BaseIsoFieldTest, unittest.TestCase):
     transformed_val = datetime(2013, 9, 30, 11, 32, 39, 984847)
     ok_val = "2013-09-30T11:32:39.984847"
     nok_val = "BAD STRING"
     field_class = DateTimeField
 
-    def test_naive_input(self):
+    def test_string_timezone_input(self):
         field = self.field_class()
-        dt = datetime(2013, 9, 30, 11, 32, 39, 984847)
-        self.assertEqual(field.deserialize(dt), dt)
+        expected = datetime(2013, 9, 30, 8, 32, 39, 984847)
+        self.assertEqual(field.deserialize('2013-09-30T11:32:39.984847+0300'), expected)
 
     def test_utc_timezone_input(self):
         field = self.field_class()
@@ -83,19 +90,57 @@ class DateTimeFieldTest(PropertyFieldTest, unittest.TestCase):
         expected = datetime(2014, 7, 1, 11, 32, 39, 984847)
         self.assertEqual(field.deserialize(dt), expected)
 
-    def test_string_input(self):
-        field = self.field_class()
-        expected = datetime(2013, 9, 30, 11, 32, 39, 984847)
-        self.assertEqual(field.deserialize('2013-09-30T11:32:39.984847'), expected)
+
+class DateFieldTest(BaseIsoFieldTest, unittest.TestCase):
+    transformed_val = date(2013, 9, 30)
+    ok_val = "2013-09-30"
+    nok_val = "BAD STRING"
+    field_class = DateField
+
+
+class TimeFieldTest(BaseIsoFieldTest, unittest.TestCase):
+    transformed_val = time(12, 11, 10)
+    ok_val = "12:11:10"
+    nok_val = "BAD STRING"
+    field_class = TimeField
 
     def test_string_timezone_input(self):
         field = self.field_class()
-        expected = datetime(2013, 9, 30, 8, 32, 39, 984847)
-        self.assertEqual(field.deserialize('2013-09-30T11:32:39.984847+0300'), expected)
+        expected = time(8, 32, 39, 984847)
+        self.assertEqual(field.deserialize('11:32:39.984847+0300'), expected)
 
-    def test_wrong_value(self):
+    def test_utc_timezone_input(self):
         field = self.field_class()
-        self.assertRaises(ValidationError, field.deserialize, "NON ISO TIMESTAMP")
+        t = time(11, 32, 39, 984847, tzinfo=pytz.utc)
+        expected = time(11, 32, 39, 984847)
+        self.assertEqual(field.deserialize(t), expected)
+
+    def _get_tz(self, val, tz):
+        dt = datetime.combine(date.today(), val)
+        dt = dt.astimezone(tz)
+        dt = dt.replace(tzinfo=None)
+        return dt.time()
+
+    def test_timezone_input(self):
+        field = self.field_class()
+        t = time(11, 32, 39, 984847, tzinfo=pytz.utc)
+        t = self._get_tz(t, pytz.timezone('Europe/Helsinki'))
+        expected = time(13, 32, 39, 984847)
+        self.assertEqual(field.deserialize(t), expected)
+
+    def test_timezone_dst_input(self):
+        field = self.field_class()
+        t = time(11, 32, 39, 984847, tzinfo=pytz.utc)
+        t = self._get_tz(t, pytz.timezone('Europe/Helsinki'))
+        expected = time(13, 32, 39, 984847)
+        self.assertEqual(field.deserialize(t), expected)
+
+
+class DurationFieldTest(BaseIsoFieldTest, unittest.TestCase):
+    transformed_val = datetime(2015, 10, 9) - datetime(2014, 11, 11)
+    ok_val = "P332D"
+    nok_val = "BAD STRING"
+    field_class = DurationField
 
 
 class IndexableFieldTest(BaseSimpleFieldTest):

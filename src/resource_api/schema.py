@@ -4,6 +4,7 @@ See LICENSE for details
 """
 import re
 import inspect
+import datetime
 from copy import copy
 from collections import defaultdict
 
@@ -21,7 +22,7 @@ class BaseField(object):
         help text to be shown in schema. This should include the reasons why this field actually needs to exist.
     required (bool = False)
         flag that specifes if the field has to be present
-    **kwargs
+    \*\*kwargs
         extra parameters that are not programmatically supported
     """
 
@@ -61,35 +62,106 @@ class BaseField(object):
         return rval
 
 
-class DateTimeField(BaseField):
-    """ Represents time entity that can be either datetime or ISO 8601 datetime string.
+class BaseIsoField(BaseField):
+    """ Represents time entity that can be either a native object or ISO 8601 datetime string.
     The item is
     `serialized <https://docs.python.org/2/library/datetime.html#datetime.datetime.isoformat>`_ into ISO 8601 string.
     """
 
-    verbose_name = "datetime"
+    def _parse(self, val):
+        """ Supposed to transform the value into a valid Python type using a respective isodate function """
+        raise NotImplementedError
 
     def _to_python(self, val):
-        val = super(DateTimeField, self)._to_python(val)
+        val = super(BaseIsoField, self)._to_python(val)
         if val is None:
             return None
         if isinstance(val, basestring):
             try:
                 # Parse datetime
-                val = isodate.parse_datetime(val)
+                val = self._parse(val)
             except ValueError:
-                raise ValidationError("Timestamp has to be a string in ISO 8601 format")
+                raise ValidationError("Datetime timestamp has to be a string in ISO 8601 format")
 
-        # Convert to naive UTC
-        if val.tzinfo:
-            val = val.astimezone(pytz.utc)
-            val = val.replace(tzinfo=None)
         return val
 
     def serialize(self, val):
         if val is None:
             return None
         return val.isoformat()
+
+
+class DateTimeField(BaseIsoField):
+    """ datetime object serialized into YYYY-MM-DDThh:mm:ss.sTZD.
+
+    E.g.: 2013-09-30T11:32:39.984847 """
+    verbose_name = "datetime"
+
+    def _parse(self, val):
+        return isodate.parse_datetime(val)
+
+    def _to_python(self, val):
+        val = super(DateTimeField, self)._to_python(val)
+
+        if val is None:
+            return None
+
+        # Convert to naive UTC
+        if hasattr(val, "tzinfo") and val.tzinfo:
+            val = val.astimezone(pytz.utc)
+            val = val.replace(tzinfo=None)
+
+        return val
+
+
+class DateField(BaseIsoField):
+    """ date object serialized into YYYY-MM-DD.
+
+    E.g.: 2013-09-30 """
+    verbose_name = "date"
+
+    def _parse(self, val):
+        return isodate.parse_date(val)
+
+
+class TimeField(BaseIsoField):
+    """ time object serialized into hh:mm:ssTZD.
+
+    E.g.: 11:32:39.984847 """
+    verbose_name = "time"
+
+    def _parse(self, val):
+        return isodate.parse_time(val)
+
+    def _to_python(self, val):
+        val = super(TimeField, self)._to_python(val)
+
+        if val is None:
+            return None
+
+        # Convert to naive UTC
+        if hasattr(val, "tzinfo") and val.tzinfo:
+            dt = datetime.datetime.combine(datetime.date.today(), val)
+            dt = dt.astimezone(pytz.utc)
+            dt = dt.replace(tzinfo=None)
+            val = dt.time()
+
+        return val
+
+
+class DurationField(BaseIsoField):
+    """ timedelta object serialized into PnYnMnDTnHnMnS.
+
+    E.g.: P105DT9H52M49.448422S"""
+    verbose_name = "duration"
+
+    def _parse(self, val):
+        return isodate.parse_duration(val)
+
+    def serialize(self, val):
+        if val is None:
+            return None
+        return isodate.duration_isoformat(val)
 
 
 class BaseSimpleField(BaseField):
@@ -402,15 +474,15 @@ class ObjectField(BaseField):
         super(ObjectField, self).__init__(**kwargs)
 
         if isinstance(schema, dict):
-            class tmp(Schema):
+            class Tmp(Schema):
                 pass
             for key, value in schema.iteritems():
-                setattr(tmp, key, value)
-            schema = tmp
+                setattr(Tmp, key, value)
+            schema = Tmp
         elif inspect.isclass(schema) and not issubclass(schema, Schema):
-            class tmp(schema, Schema):
+            class Tmp(schema, Schema):
                 pass
-            schema = tmp
+            schema = Tmp
         self._schema = schema()
 
     def deserialize(self, val):

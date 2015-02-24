@@ -1,7 +1,7 @@
- ☐ DateField
- ☐ TimeField
- ☐ DurationField
+ ✔ DateField @done (15-02-23 17:42)
+ ✔ TimeField @done (15-02-23 17:42)
+ ✔ DurationField @done (15-02-23 17:42)
  ☐ UrlField (checks if the url is 200 fetchable)
  ☐ Resource/Link level validate(data) method that is supposed to raise ValidationError
  ☐ Handle resource composition (parent/child relation)
- ☐ Think how to organizr the setup*.py files
+ ☐ Think how to organize the setup*.py files

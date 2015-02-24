@@ -51,9 +51,15 @@ The fields representing integers and floats respecively are:
 
 ----------
 
-Time is represented by:
+Time related fields are represented by:
 
 .. autoclass:: resource_api.schema.DateTimeField
+
+.. autoclass:: resource_api.schema.DateField
+
+.. autoclass:: resource_api.schema.TimeField
+
+.. autoclass:: resource_api.schema.DurationField
 
 ----------
 
