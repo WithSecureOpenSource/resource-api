@@ -20,7 +20,6 @@ setup(
     packages=["resource_api"],
     author="F-Secure Corporation",
     author_email="<TBD>",
-    url="http://resource-api.readthedocs.org/"
-    description=("A framework that allows developers declaratively " 
-                 "define resources and relationships between them"),
+    url="http://resource-api.readthedocs.org/",
+    description="A framework that allows developers declaratively define resources and relationships between them"
 )
