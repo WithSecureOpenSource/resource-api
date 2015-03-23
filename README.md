@@ -38,24 +38,23 @@ Example
 
 Notes:
 
-- It is a good idea to annotate each commit with PATCH|MINOR|MAJOR message so that it is easier to control the version
-  based on the output of `git log` command
+- It is a good idea to annotate each commit with "1:", "2:" and "3:" message for PATCH|MINOR|MAJOR respectively so that
+  it is easier to control the version based on the output of `git log` command
 - There is no need to modify changelog when documentation or travis related files are updated. Only changes of the
   source code are important.
 
 ## Release steps
 
-1. Switch to **master**
-2. Merge **dev** into **master**
-3. Make sure that all checks and tests pass
-4. Increment the version in **CHANGES** file according to the types of changes made since the latest release. Add
-   timestamp to indicate that the version was released.
-5. Commit the changes
-6. Execute "git tag VERSION -m VERSION"
-7. Switch to **dev**
-8. Merge **master** into **dev**
-9. Push **dev** & **master** branches to upstream
-10. Push tags to upstream
+1. Switch to **dev**
+2. Make sure that pep8 & pyflakes checks and tests pass
+3. Increment the version in **CHANGES** file according to the types of changes made since the latest release. Add
+   timestamp to indicate when the version was released.
+4. Commit the changes
+5. Switch to **master**
+6. Merge **dev** into **master**
+7. Execute `git tag VERSION -m VERSION`
+8. Push **dev** & **master** branches to upstream
+9. Push tags to upstream
 
 ## Pull requests
 
