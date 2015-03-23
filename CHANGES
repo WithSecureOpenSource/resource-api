@@ -1,7 +1,8 @@
-3.1.0 2015-03-23
+3.1.1 2015-03-23
 
     [Anton Berezin <anton.berezin@f-secure.com>]
         * MINOR: Implemented DateField, TimeField & DurationField
+        * PATCH: fixed setup.py file
 
 3.0.2 2015-02-21
 
