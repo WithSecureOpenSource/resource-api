@@ -1,3 +1,8 @@
+3.1.0 2015-03-23
+
+    [Anton Berezin <anton.berezin@f-secure.com>]
+        * MINOR: Implemented DateField, TimeField & DurationField
+
 3.0.2 2015-02-21
 
     [Anton Berezin <anton.berezin@f-secure.com>]
