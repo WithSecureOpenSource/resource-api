@@ -181,7 +181,7 @@ class BaseSimpleField(BaseField):
         try:
             return self.python_type(val)
         except ValueError:
-            raise ValidationError("Converion of value %r failed" % val)
+            raise ValidationError("Conversion of value %r failed" % val)
 
     def get_schema(self):
         rval = super(BaseSimpleField, self).get_schema()
