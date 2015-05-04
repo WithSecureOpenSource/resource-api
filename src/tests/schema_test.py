@@ -116,7 +116,7 @@ class TimeFieldTest(BaseIsoFieldTest, unittest.TestCase):
         self.assertEqual(field.deserialize(t), expected)
 
     def _get_tz(self, val, tz):
-        dt = datetime.combine(date.today(), val)
+        dt = datetime.combine(date(2015, 2, 2), val)
         dt = dt.astimezone(tz)
         dt = dt.replace(tzinfo=None)
         return dt.time()
