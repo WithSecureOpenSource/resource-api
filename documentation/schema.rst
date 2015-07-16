@@ -1,4 +1,5 @@
 .. _schema:
+.. py:currentmodule:: resource_api
 
 Schema
 ======
@@ -35,6 +36,18 @@ readonly (bool=False)
 
 changeable (bool=False)
     if True field can be set during creation but cannot be change later on. User's birth date is a valid example.
+
+Field choices
+"""""""""""""
+
+For all fields inherit from :class:`schema.IndexableField`, it's possible to define list of possible
+values as choices. When choices are defined for a field field value is only allowed to be set one of these, otherwise
+:exc:`errors.ValidationError` is raised.
+
+To define human readable labels for the value choices, pass a list or tuple of
+labels as the *choice_labels* attribute for the field. This is useful for scenarios such as automated UI generation.
+
+.. autoclass:: resource_api.schema.IndexableField
 
 Primitive fields
 ----------------

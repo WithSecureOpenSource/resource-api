@@ -190,8 +190,21 @@ class BaseSimpleField(BaseField):
 
 
 class IndexableField(BaseSimpleField):
+    """
+    Base class for most of the primitive fields.
 
-    def __init__(self, choices=None, invalid_choices=None, **kwargs):
+    choices (list|tuple = None)
+        Predefined list of possible values for the field. ValidationError will be raised if field value doesn't
+        match any of the defined values.
+    choice_labels (list|tuple = None)
+        List of human readable labels for defined choice values.
+        The length of the list must match length of the defined choices.
+    invalid_choices (list|tuple = None)
+        List of invalid values for the field. ValidationError will be raised if the field value matches any of the
+        defined values.
+    """
+
+    def __init__(self, choices=None, choice_labels=None, invalid_choices=None, **kwargs):
         super(IndexableField, self).__init__(**kwargs)
 
         if choices is not None:
@@ -204,6 +217,12 @@ class IndexableField(BaseSimpleField):
                 except Exception, e:
                     raise DeclarationError("[%d]: %s" % (i, str(e)))
             choices = tempo
+
+        if choice_labels is not None:
+            if not isinstance(choice_labels, (list, tuple)):
+                raise DeclarationError("choices has to be a list or tuple")
+            if choices is None or len(choices) != len(choice_labels):
+                raise DeclarationError("length of choice_labels has to match with choices.")
 
         if invalid_choices is not None:
             if not isinstance(invalid_choices, (list, tuple)):
@@ -227,7 +246,7 @@ class IndexableField(BaseSimpleField):
             if inter:
                 raise DeclarationError("these choices are stated as both valid and invalid: %r" % inter)
 
-        self.choices, self.invalid_choices = choices, invalid_choices
+        self.choices, self.choice_labels, self.invalid_choices = choices, choice_labels, invalid_choices
 
     def _validate(self, val):
         super(IndexableField, self)._validate(val)
@@ -241,6 +260,7 @@ class IndexableField(BaseSimpleField):
     def get_schema(self):
         rval = super(IndexableField, self).get_schema()
         rval["choices"] = self.choices
+        rval["choice_labels"] = self.choice_labels
         rval["invalid_choices"] = self.invalid_choices
         return rval
 

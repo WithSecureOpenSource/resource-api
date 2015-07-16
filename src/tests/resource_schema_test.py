@@ -35,6 +35,7 @@ EXPECTED_PY_SCHEMA = {
                         "default": None,
                         "required": False,
                         "choices": None,
+                        "choice_labels": None,
                         "max_length": None,
                         "invalid_choices": None,
                         "type": "string"
@@ -46,6 +47,7 @@ EXPECTED_PY_SCHEMA = {
                         "default": None,
                         "required": False,
                         "choices": None,
+                        "choice_labels": None,
                         "max_length": None,
                         "invalid_choices": None,
                         "type": "string"
@@ -71,6 +73,7 @@ EXPECTED_PY_SCHEMA = {
                         "default": None,
                         "required": True,
                         "choices": None,
+                        "choice_labels": None,
                         "max_length": None,
                         "invalid_choices": None,
                         "type": "string"
@@ -84,6 +87,7 @@ EXPECTED_PY_SCHEMA = {
                         "default": None,
                         "required": False,
                         "choices": None,
+                        "choice_labels": None,
                         "max_length": None,
                         "invalid_choices": None,
                         "type": "string"
@@ -95,6 +99,7 @@ EXPECTED_PY_SCHEMA = {
                         "default": None,
                         "required": False,
                         "choices": None,
+                        "choice_labels": None,
                         "max_length": None,
                         "invalid_choices": None,
                         "type": "string"
@@ -117,6 +122,7 @@ EXPECTED_PY_SCHEMA = {
                         "default": None,
                         "required": False,
                         "choices": None,
+                        "choice_labels": None,
                         "max_length": None,
                         "invalid_choices": None,
                         "type": "string"
@@ -128,6 +134,7 @@ EXPECTED_PY_SCHEMA = {
                         "default": None,
                         "required": False,
                         "choices": None,
+                        "choice_labels": None,
                         "max_length": None,
                         "invalid_choices": None,
                         "type": "string"
@@ -143,6 +150,7 @@ EXPECTED_PY_SCHEMA = {
                 "default": None,
                 "required": True,
                 "choices": None,
+                "choice_labels": None,
                 "max_length": None,
                 "invalid_choices": None,
                 "type": "string"
@@ -155,6 +163,7 @@ EXPECTED_PY_SCHEMA = {
                 "default": None,
                 "required": True,
                 "choices": None,
+                "choice_labels": None,
                 "max_val": None,
                 "pk": True,
                 "invalid_choices": None,
@@ -167,6 +176,7 @@ EXPECTED_PY_SCHEMA = {
                 "default": None,
                 "required": False,
                 "choices": None,
+                "choice_labels": None,
                 "max_length": None,
                 "invalid_choices": None,
                 "type": "string"
@@ -178,6 +188,7 @@ EXPECTED_PY_SCHEMA = {
                 "default": None,
                 "required": False,
                 "choices": None,
+                "choice_labels": None,
                 "max_length": None,
                 "invalid_choices": None,
                 "type": "string"
@@ -198,6 +209,7 @@ EXPECTED_PY_SCHEMA = {
                 "default": None,
                 "required": True,
                 "choices": None,
+                "choice_labels": None,
                 "max_length": None,
                 "invalid_choices": None,
                 "type": "string"
@@ -221,6 +233,7 @@ EXPECTED_PY_SCHEMA = {
                         "default": None,
                         "required": True,
                         "choices": None,
+                        "choice_labels": None,
                         "max_length": None,
                         "invalid_choices": None,
                         "type": "string"
@@ -234,6 +247,7 @@ EXPECTED_PY_SCHEMA = {
                         "default": None,
                         "required": False,
                         "choices": None,
+                        "choice_labels": None,
                         "max_length": None,
                         "invalid_choices": None,
                         "type": "string"
@@ -245,6 +259,7 @@ EXPECTED_PY_SCHEMA = {
                         "default": None,
                         "required": False,
                         "choices": None,
+                        "choice_labels": None,
                         "max_length": None,
                         "invalid_choices": None,
                         "type": "string"
@@ -267,6 +282,7 @@ EXPECTED_PY_SCHEMA = {
                         "default": None,
                         "required": False,
                         "choices": None,
+                        "choice_labels": None,
                         "max_length": None,
                         "invalid_choices": None,
                         "type": "string"
@@ -278,6 +294,7 @@ EXPECTED_PY_SCHEMA = {
                         "default": None,
                         "required": False,
                         "choices": None,
+                        "choice_labels": None,
                         "max_length": None,
                         "invalid_choices": None,
                         "type": "string"
@@ -300,6 +317,7 @@ EXPECTED_PY_SCHEMA = {
                         "default": None,
                         "required": False,
                         "choices": None,
+                        "choice_labels": None,
                         "max_length": None,
                         "invalid_choices": None,
                         "type": "string"
@@ -311,6 +329,7 @@ EXPECTED_PY_SCHEMA = {
                         "default": None,
                         "required": False,
                         "choices": None,
+                        "choice_labels": None,
                         "max_length": None,
                         "invalid_choices": None,
                         "type": "string"
@@ -325,6 +344,7 @@ EXPECTED_PY_SCHEMA = {
                 "default": None,
                 "required": True,
                 "choices": None,
+                "choice_labels": None,
                 "max_val": None,
                 "pk": True,
                 "invalid_choices": None,
@@ -337,6 +357,7 @@ EXPECTED_PY_SCHEMA = {
                 "default": None,
                 "required": False,
                 "choices": None,
+                "choice_labels": None,
                 "max_length": None,
                 "invalid_choices": None,
                 "type": "string"
@@ -348,6 +369,7 @@ EXPECTED_PY_SCHEMA = {
                 "default": None,
                 "required": False,
                 "choices": None,
+                "choice_labels": None,
                 "max_length": None,
                 "invalid_choices": None,
                 "type": "string"
@@ -371,6 +393,7 @@ EXPECTED_HUMAN_SCHEMA = {
                 "default": None,
                 "required": True,
                 "choices": None,
+                "choice_labels": None,
                 "max_length": None,
                 "invalid_choices": None,
                 "type": "string"
@@ -394,6 +417,7 @@ EXPECTED_HUMAN_SCHEMA = {
                         "default": None,
                         "required": True,
                         "choices": None,
+                        "choice_labels": None,
                         "max_length": None,
                         "invalid_choices": None,
                         "type": "string"
@@ -407,6 +431,7 @@ EXPECTED_HUMAN_SCHEMA = {
                         "default": None,
                         "required": False,
                         "choices": None,
+                        "choice_labels": None,
                         "max_length": None,
                         "invalid_choices": None,
                         "type": "string"
@@ -418,6 +443,7 @@ EXPECTED_HUMAN_SCHEMA = {
                         "default": None,
                         "required": False,
                         "choices": None,
+                        "choice_labels": None,
                         "max_length": None,
                         "invalid_choices": None,
                         "type": "string"
@@ -440,6 +466,7 @@ EXPECTED_HUMAN_SCHEMA = {
                         "default": None,
                         "required": False,
                         "choices": None,
+                        "choice_labels": None,
                         "max_length": None,
                         "invalid_choices": None,
                         "type": "string"
@@ -451,6 +478,7 @@ EXPECTED_HUMAN_SCHEMA = {
                         "default": None,
                         "required": False,
                         "choices": None,
+                        "choice_labels": None,
                         "max_length": None,
                         "invalid_choices": None,
                         "type": "string"
@@ -473,6 +501,7 @@ EXPECTED_HUMAN_SCHEMA = {
                         "default": None,
                         "required": False,
                         "choices": None,
+                        "choice_labels": None,
                         "max_length": None,
                         "invalid_choices": None,
                         "type": "string"
@@ -484,6 +513,7 @@ EXPECTED_HUMAN_SCHEMA = {
                         "default": None,
                         "required": False,
                         "choices": None,
+                        "choice_labels": None,
                         "max_length": None,
                         "invalid_choices": None,
                         "type": "string"
@@ -498,6 +528,7 @@ EXPECTED_HUMAN_SCHEMA = {
                 "default": None,
                 "required": True,
                 "choices": None,
+                "choice_labels": None,
                 "max_val": None,
                 "pk": True,
                 "invalid_choices": None,
@@ -510,6 +541,7 @@ EXPECTED_HUMAN_SCHEMA = {
                 "default": None,
                 "required": False,
                 "choices": None,
+                "choice_labels": None,
                 "max_length": None,
                 "invalid_choices": None,
                 "type": "string"
@@ -521,6 +553,7 @@ EXPECTED_HUMAN_SCHEMA = {
                 "default": None,
                 "required": False,
                 "choices": None,
+                "choice_labels": None,
                 "max_length": None,
                 "invalid_choices": None,
                 "type": "string"
@@ -552,6 +585,7 @@ EXPECTED_HUMAN_SCHEMA = {
                         "default": None,
                         "required": False,
                         "choices": None,
+                        "choice_labels": None,
                         "max_length": None,
                         "invalid_choices": None,
                         "type": "string"
@@ -563,6 +597,7 @@ EXPECTED_HUMAN_SCHEMA = {
                         "default": None,
                         "required": False,
                         "choices": None,
+                        "choice_labels": None,
                         "max_length": None,
                         "invalid_choices": None,
                         "type": "string"
@@ -588,6 +623,7 @@ EXPECTED_HUMAN_SCHEMA = {
                         "default": None,
                         "required": True,
                         "choices": None,
+                        "choice_labels": None,
                         "max_length": None,
                         "invalid_choices": None,
                         "type": "string"
@@ -601,6 +637,7 @@ EXPECTED_HUMAN_SCHEMA = {
                         "default": None,
                         "required": False,
                         "choices": None,
+                        "choice_labels": None,
                         "max_length": None,
                         "invalid_choices": None,
                         "type": "string"
@@ -612,6 +649,7 @@ EXPECTED_HUMAN_SCHEMA = {
                         "default": None,
                         "required": False,
                         "choices": None,
+                        "choice_labels": None,
                         "max_length": None,
                         "invalid_choices": None,
                         "type": "string"
@@ -634,6 +672,7 @@ EXPECTED_HUMAN_SCHEMA = {
                         "default": None,
                         "required": False,
                         "choices": None,
+                        "choice_labels": None,
                         "max_length": None,
                         "invalid_choices": None,
                         "type": "string"
@@ -645,6 +684,7 @@ EXPECTED_HUMAN_SCHEMA = {
                         "default": None,
                         "required": False,
                         "choices": None,
+                        "choice_labels": None,
                         "max_length": None,
                         "invalid_choices": None,
                         "type": "string"
@@ -660,6 +700,7 @@ EXPECTED_HUMAN_SCHEMA = {
                 "default": None,
                 "required": True,
                 "choices": None,
+                "choice_labels": None,
                 "max_length": None,
                 "invalid_choices": None,
                 "type": "string"
@@ -672,6 +713,7 @@ EXPECTED_HUMAN_SCHEMA = {
                 "default": None,
                 "required": True,
                 "choices": None,
+                "choice_labels": None,
                 "max_val": None,
                 "pk": True,
                 "invalid_choices": None,
@@ -684,6 +726,7 @@ EXPECTED_HUMAN_SCHEMA = {
                 "default": None,
                 "required": False,
                 "choices": None,
+                "choice_labels": None,
                 "max_length": None,
                 "invalid_choices": None,
                 "type": "string"
@@ -695,6 +738,7 @@ EXPECTED_HUMAN_SCHEMA = {
                 "default": None,
                 "required": False,
                 "choices": None,
+                "choice_labels": None,
                 "max_length": None,
                 "invalid_choices": None,
                 "type": "string"
