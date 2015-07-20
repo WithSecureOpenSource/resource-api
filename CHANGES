@@ -1,3 +1,8 @@
+3.2.0 2015-07-20
+
+    [Jouni Kuusisto <jouni.kuusisto@f-secure.com>]
+        * MINOR: Implemented choice labels for IdexableField subclasses.
+
 3.1.1 2015-03-23
 
     [Anton Berezin <anton.berezin@f-secure.com>]

@@ -163,6 +163,18 @@ class IndexableFieldTest(BaseSimpleFieldTest):
         # wrong item types
         self.assertRaises(DeclarationError, self.field_class, invalid_choices=self.nok_choices)
 
+    def test_wrong_choice_labels(self):
+        # not a list (while len() would match)
+        self.assertRaises(DeclarationError, self.field_class, choices=self.ok_choices,
+                          choice_labels="W" * len(self.ok_choices))
+        # wrong number of labels
+        self.assertRaises(DeclarationError, self.field_class, choices=self.ok_choices,
+                          choice_labels=self.ok_choices + [self.ok_choices[-1]])
+
+    def test_ok_choice_labels(self):
+        self.field_class(choices=self.ok_choices,
+                         choice_labels=self.ok_choices)
+
     def test_not_in_choices(self):
         field = self.field_class(choices=self.ok_choices)
         self.assertRaises(ValidationError, field.deserialize, self.nok_choice_value)
@@ -291,6 +303,7 @@ class StringFieldTest(IndexableFieldTest, unittest.TestCase):
             'description': None,
             'required': True,
             'choices': None,
+            'choice_labels': None,
             'invalid_choices': None,
             'default': None,
             'min_length': 16,
@@ -367,8 +380,9 @@ class ObjectFieldTest(PropertyFieldTest, unittest.TestCase):
             "type": "dict",
             "schema": {
                 "two": {'type': 'list', 'description': None, 'required': True,
-                        'schema': {'type': 'int', 'description': None, 'choices': None, 'default': None,
-                                   'invalid_choices': None, 'max_val': None, 'min_val': None, 'required': True}},
+                        'schema': {'type': 'int', 'description': None, 'choices': None, 'choice_labels': None,
+                                   'default': None, 'invalid_choices': None, 'max_val': None, 'min_val': None,
+                                   'required': True}},
                 "has_additional_fields": True
             }
         })
@@ -386,7 +400,8 @@ class ObjectFieldTest(PropertyFieldTest, unittest.TestCase):
             "schema": {
                 "two": {'type': 'list', 'description': None, 'required': True,
                         'schema': {'type': 'int', 'description': None, 'choices': None, 'default': None,
-                                   'invalid_choices': None, 'max_val': None, 'min_val': None, 'required': True}},
+                                   'choice_labels': None, 'invalid_choices': None, 'max_val': None, 'min_val': None,
+                                   'required': True}},
                 "has_additional_fields": True
             }
         })
